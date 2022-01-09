@@ -15,4 +15,17 @@ body {
   width: 49.5vw;
   height: 49vh;
   border: 1px black solid;
+  padding: 0;
+}
+
+.button {
+  display: block;
+  margin-left: 50%;
+  margin-right: 50%;
+  width: 80px;
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: whitesmoke;
+  cursor: pointer;
 }
