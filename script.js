@@ -1,17 +1,20 @@
 let palette = document.getElementById("palette");
 
+window.addEventListener('load', allWindowLoadFuncs);
+
 function colorFields() {
     for (let i = 0; i < 4; i++) {
         let color = document.createElement("div");
         color.className = "colors";
         color.setAttribute("id", `color${[i+1]}`);
+        palette.appendChild(color);
         let buttonChange = document.createElement("button");
         buttonChange.innerText = "Change";
+        buttonChange.className = "change-btn";
         let buttonKeep = document.createElement("button");
         buttonKeep.innerText = "Keep";
         color.appendChild(buttonChange);
         color.appendChild(buttonKeep);
-        palette.appendChild(color);
     }
 }
 
@@ -24,14 +27,20 @@ function addRandomColor() {
     }
 }
 
+let changeButtons = document.getElementsByClassName("change-btn");
+
+function buttonClrChange() {
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    this.parentElement.style.background = "#" + randomColor;
+}
+
 function allWindowLoadFuncs() {
     colorFields();
     addRandomColor();
+    Array.from(changeButtons).forEach(button => button.addEventListener("click", buttonClrChange));
 }
 
-window.addEventListener('load', allWindowLoadFuncs);
 
-/* let allButtons = document.getElementsByTagName("button");
-let buts = Array.from(allButtons);
 
-buts.forEach(x => x.addEventListener("click", addRandomColor)) */
+
+
